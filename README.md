@@ -153,6 +153,23 @@ func main() {
 ```
 2) Проверка высокосного года
 ```
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	var number int
+	fmt.Println("Введите любое целое число: ")
+	fmt.Fscan(os.Stdin, &number)
+	if number%2 == 1 {
+		fmt.Println("Введённое число нечётное!")
+	} else {
+		fmt.Println("Введённое число чётное!")
+	}
+}
 ```
 3) Определение наибольшего из трех чисел
 ```
@@ -239,6 +256,30 @@ func main() {
 
 1) Факториал числа
 ```
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var number int
+	fmt.Println("Введите число для вычисления факториала:")
+	fmt.Scan(&number)
+
+	if number < 0 {
+		fmt.Println("Факториал отрицательных чисел не существует.")
+	} else {
+		fmt.Printf("Факториал числа %d равен %d\n", number, factorial(number))
+	}
+}
+
+func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
 ```
 2) Числа Фибоначчи
 ```
@@ -300,6 +341,37 @@ func main() {
 ```
 4) Поиск простых чисел
 ```
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	var number int
+	fmt.Println("Введите любое целое число:")
+	fmt.Fscan(os.Stdin, &number)
+
+	if number > 1 {
+		fmt.Println("Простые числа до", number, ":")
+		for i := 2; i <= number; i++ {
+			isPrime := true
+			for j := 2; j*j <= i; j++ {
+				if i%j == 0 {
+					isPrime = false
+					break
+				}
+			}
+			if isPrime {
+				fmt.Print(i, " ")
+			}
+		}
+		fmt.Println()
+	} else {
+		fmt.Println("Простых чисел нет")
+	}
+}
 ```
 5) Сумма чисел в массиве
 ```
